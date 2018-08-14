@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.model.product_review.ProductReview;
 import com.mycompany.model.product_review.ProductReviewStatus;
-import com.mycompany.model.product_review.ProductReviewStatusDao;
 import com.mycompany.model.product_review.Status;
 import com.mycompany.model.product_review.StatusDao;
 
