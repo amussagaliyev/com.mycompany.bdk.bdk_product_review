@@ -1,5 +1,7 @@
 package com.mycompany.service.product_review;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,9 @@ import com.mycompany.sdk.redis.RedisQueue;
 @Transactional
 public class ProductReviewService
 {
+	
+	private final Logger log = LoggerFactory.getLogger(ProductReviewService.class);
+	
 	@Autowired
 	private ProductReviewDao productReviewDao;
 	
@@ -42,7 +47,7 @@ public class ProductReviewService
 		productReview = productReviewDao.save(productReview);
 
 		submittedQueue.publish(productReview.getProductReviewID().toString());
-
+		log.info("Product Review saved and pushed to the Submitted Queue");
 		return productReview;
 	}
 
