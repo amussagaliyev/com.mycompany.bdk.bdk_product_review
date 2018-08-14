@@ -46,9 +46,13 @@ public class ProductReviewService
 		
 		productReview = productReviewDao.save(productReview);
 
-		submittedQueue.publish(productReview.getProductReviewID().toString());
-		log.info("Product Review saved and pushed to the Submitted Queue");
+		log.info("Product Review saved");
 		return productReview;
+	}
+	
+	public void publishToSubmittedQueue(Integer productReviewID)
+	{
+		submittedQueue.publish(productReviewID.toString());
 	}
 
 	public ProductReview createProductReview(UserReview userReview)
